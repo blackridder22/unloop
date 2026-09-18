@@ -11,6 +11,11 @@ try {
   await p.goto(base);
   await p.getByRole("heading", { name: "You came for one video." }).waitFor();
   await p.evaluate(() => document.fonts.ready);
+  for (const image of await p.locator("img").all()) {
+    await image.scrollIntoViewIfNeeded();
+    await image.evaluate(async (img) => { await img.decode(); });
+  }
+  await p.evaluate(() => window.scrollTo(0, 0));
   assert.equal(
     await p
       .locator("img")
