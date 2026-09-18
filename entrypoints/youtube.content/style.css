@@ -1,0 +1,57 @@
+html[data-iy-theme]{--iy-bg:#fff;--iy-fg:#171717;--iy-muted:#686868;--iy-border:#e8e8e8;--iy-surface:#f6f6f6;--iy-scheme:light;color-scheme:var(--iy-scheme)}
+html[data-iy-theme=dark]{--iy-bg:#111111;--iy-fg:#eeeeee;--iy-muted:#a3a3a3;--iy-border:#303030;--iy-surface:#1d1d1d;--iy-scheme:dark}
+/* Only the extension's visibility classes suppress user-controlled sections. */
+html.iy-blocked{visibility:hidden!important}
+ytd-guide-renderer,ytd-mini-guide-renderer,#guide-button,ytd-miniplayer{display:none!important}
+ytd-app{--ytd-mini-guide-width:0px;--ytd-guide-width:0px}ytd-page-manager{margin-left:0!important}
+html.iy-hide-comments #comments,html.iy-hide-comments ytd-comments,html.iy-hide-comments ytm-comment-section-renderer{display:none!important}
+html.iy-hide-recommendations #related,html.iy-hide-recommendations ytd-watch-next-secondary-results-renderer,html.iy-hide-recommendations ytm-item-section-renderer[section-identifier="related-items"],html.iy-hide-recommendations .ytp-endscreen-content,html.iy-hide-recommendations .ytp-ce-element,html.iy-hide-recommendations .ytp-pause-overlay,html.iy-hide-recommendations ytd-search ytd-shelf-renderer,html.iy-hide-recommendations ytd-search ytd-horizontal-card-list-renderer,html.iy-hide-recommendations ytd-search ytd-radio-renderer{display:none!important}
+html.iy-hide-shorts :is(ytd-reel-shelf-renderer,ytd-reel-video-renderer,ytd-shorts,ytm-reel-shelf-renderer,ytm-shorts-lockup-view-model,ytm-shorts-lockup-view-model-v2,yt-shorts-lockup-view-model,ytd-rich-shelf-renderer[is-shorts],grid-shelf-view-model:has(a[href^="/shorts/"]),a[href^="/shorts/"],[data-iy-hidden],yt-tab-shape[tab-title="Shorts"],tp-yt-paper-tab[aria-label="Shorts"],ytm-pivot-bar-item-renderer[aria-label="Shorts"]){display:none!important}
+html.iy-hide-autoplay :is(.ytp-autonav-endscreen,.ytp-autonav-toggle-button-container,.ytp-next-button,ytd-video-preview,#video-preview,#inline-preview-player){display:none!important}
+html.iy-watch,html.iy-watch body,html.iy-watch ytd-app{background:var(--iy-bg)!important}
+html.iy-watch ytd-masthead,html.iy-watch #masthead-container,html.iy-watch #cinematics{display:none!important}
+html.iy-watch.iy-hide-recommendations ytd-watch-flexy #secondary{display:none!important}
+html.iy-watch ytd-page-manager{margin-top:0!important}
+html.iy-watch ytd-watch-flexy{--ytd-watch-flexy-max-player-width:1040px!important;--ytd-watch-flexy-min-player-width:0px!important;--ytd-watch-flexy-sidebar-width:0px!important;}
+html.iy-watch ytd-watch-flexy #columns{display:block!important;width:min(1040px,calc(100% - 48px))!important;margin:0 auto!important;max-width:none!important;min-width:0!important}
+html.iy-watch ytd-watch-flexy #primary{width:100%!important;max-width:none!important;min-width:0!important;padding:0!important;margin:0!important}
+html.iy-watch ytd-watch-flexy #primary-inner{width:100%!important}
+html.iy-watch ytd-watch-flexy #secondary{width:100%!important;padding:24px 0!important}
+html.iy-watch ytd-watch-flexy:not([fullscreen]) #player-container-outer{max-width:none!important;min-width:0!important;width:100%!important}
+html.iy-watch ytd-watch-flexy:not([fullscreen]) #player-container-inner{padding-top:56.25%!important}
+html.iy-watch ytd-watch-flexy:not([fullscreen]) #movie_player{border-radius:12px;overflow:hidden}
+html.iy-watch ytd-watch-flexy[theater]:not([fullscreen]) #player-theater-container{width:min(1040px,calc(100% - 48px))!important;height:auto!important;aspect-ratio:16/9;margin:0 auto!important;min-height:0!important;max-height:none!important}
+html.iy-watch ytd-watch-flexy[fullscreen] #movie_player{border-radius:0}
+html.iy-watch:has(ytd-watch-flexy[fullscreen]) #iy-header{display:none!important}
+html.iy-watch .ytp-chrome-bottom{border-radius:0 0 12px 12px}
+html.iy-watch ytd-app{position:relative!important;top:auto!important}
+/* Preserve native metadata and its live controls instead of inert copies. */
+html.iy-watch #below{display:block!important;padding-bottom:64px;color:var(--iy-fg);color-scheme:var(--iy-scheme);--yt-spec-text-primary:var(--iy-fg);--yt-spec-text-secondary:var(--iy-muted);--yt-spec-base-background:var(--iy-bg);--yt-spec-raised-background:var(--iy-surface);--yt-spec-menu-background:var(--iy-bg);--yt-spec-badge-chip-background:var(--iy-surface);--yt-spec-button-chip-background-hover:var(--iy-border);--yt-spec-10-percent-layer:var(--iy-border);--yt-spec-static-brand-white:var(--iy-bg);--yt-spec-call-to-action:var(--iy-fg);--yt-spec-touch-response:var(--iy-fg);font-family:'Geist Variable',Geist,Arial,sans-serif}
+html.iy-watch #below ytd-watch-metadata{margin-top:0!important}
+html.iy-watch ytd-watch-metadata h1{display:none!important}
+html.iy-watch ytd-watch-metadata #top-row{margin-top:0!important;gap:12px;margin-bottom:20px!important;flex-wrap:wrap}
+html.iy-watch ytd-watch-metadata #owner{min-width:0!important;flex:1 1 350px}
+html.iy-watch ytd-watch-metadata #actions{flex:1 1 380px;margin:0!important}
+html.iy-watch ytd-watch-metadata #actions-inner{justify-content:flex-end;flex-wrap:wrap;gap:8px}
+html.iy-watch ytd-watch-metadata #description.ytd-watch-metadata{box-sizing:border-box!important;display:block;border:1px solid var(--iy-border)!important;border-radius:14px!important;background:var(--iy-surface)!important;padding:24px!important;margin:0!important;color:var(--iy-fg)!important;width:100%!important}
+html.iy-watch ytd-watch-metadata #description.ytd-watch-metadata::before{content:'Description';display:block;font:600 15px/22px 'Geist Variable',Geist,Arial,sans-serif;color:var(--iy-fg);margin-bottom:16px}
+html.iy-watch ytd-watch-metadata #description-inner{margin:0!important}
+html.iy-watch ytd-watch-metadata #description.ytd-watch-metadata :is(yt-formatted-string,yt-attributed-string){font-family:'Geist Variable',Geist,Arial,sans-serif!important;font-size:14px!important;line-height:24px!important}
+html.iy-watch ytd-watch-metadata #description.ytd-watch-metadata a{text-decoration:underline;text-underline-offset:3px}
+html.iy-watch.iy-hide-description ytd-watch-metadata #description.ytd-watch-metadata,html.iy-watch.iy-hide-creator ytd-watch-metadata #owner,html.iy-watch.iy-hide-actions ytd-watch-metadata #actions{display:none!important}
+html.iy-watch.iy-hide-creator.iy-hide-actions ytd-watch-metadata #top-row{display:none!important}
+html.iy-watch #below #comments{padding-top:24px}
+@media(max-width:700px){html.iy-watch ytd-watch-metadata #actions-inner{justify-content:flex-start}html.iy-watch ytd-watch-metadata #description.ytd-watch-metadata{padding:18px!important}}
+html.iy-watch #below,html.iy-watch #below ytd-watch-metadata{box-sizing:border-box!important;width:100%!important;margin-right:0!important}
+html.iy-watch ytd-watch-metadata #actions{min-width:0!important;max-width:100%!important}
+html.iy-watch ytd-watch-metadata :is(yt-formatted-string,yt-attributed-string,button){font-family:'Geist Variable',Geist,Arial,sans-serif!important}
+html.iy-watch #below{--yt-spec-inverted-background:var(--iy-fg);--yt-spec-inverted-foreground:var(--iy-bg);--yt-spec-icon-active-other:var(--iy-fg);--yt-spec-button-chip-background:var(--iy-surface);--yt-spec-icon-inactive:var(--iy-muted)}
+html.iy-watch ytd-watch-metadata #owner yt-attributed-string span{color:var(--iy-fg)!important}
+/* YouTube also declares theme variables on individual components. */
+html.iy-watch #below,html.iy-watch #below *{--yt-spec-text-primary:var(--iy-fg)!important;--yt-spec-text-secondary:var(--iy-muted)!important;--yt-spec-base-background:var(--iy-bg)!important;--yt-spec-raised-background:var(--iy-surface)!important;--yt-spec-badge-chip-background:var(--iy-surface)!important;--yt-spec-inverted-background:var(--iy-fg)!important;--yt-spec-inverted-foreground:var(--iy-bg)!important;--yt-spec-icon-active-other:var(--iy-fg)!important;--yt-spec-call-to-action:var(--iy-fg)!important}
+html.iy-watch #below :is(yt-formatted-string,yt-attributed-string,yt-attributed-string span,h2,h3){color:var(--iy-fg)!important}
+html.iy-watch ytd-watch-metadata button{color:var(--iy-fg)!important;background:var(--iy-surface)!important}
+html.iy-watch ytd-watch-metadata #subscribe-button button,html.iy-watch ytd-watch-metadata #subscribe-button button *{background:var(--iy-fg)!important;color:var(--iy-bg)!important}
+html.iy-watch ytd-watch-metadata #bottom-row{width:100%!important;max-width:100%!important;min-width:0!important;box-sizing:border-box!important}
+html.iy-watch ytd-watch-metadata #description.ytd-watch-metadata{max-width:100%!important;min-width:0!important;flex-basis:auto!important}
+html.iy-watch #below :is(a,span,p),html.iy-watch #description.ytd-watch-metadata :is(#expand,#collapse){color:var(--iy-fg)!important}

@@ -1,0 +1,287 @@
+/*
+ * blackridder22UI semantic theme
+ *
+ * Concrete values are limited to this theme layer. Every primitive and pattern
+ * consumes the semantic variables below, so the live theme controls can safely
+ * replace the entire palette without component-level color overrides.
+ */
+
+@custom-variant dark (&:is(.dark *));
+
+:root {
+  color-scheme: light;
+
+  /* Captura-derived preset fallbacks (kept in the theme layer). */
+  --user-primary: #f08b64;
+  --user-primary-foreground: #17110e;
+  --user-background: #08090a;
+  --user-surface: #17191b;
+  --user-success: #58d17b;
+  --user-warning: #e9ad61;
+  --user-danger: #f17b72;
+  --user-info: #6ea8fe;
+  --user-radius: 10px;
+  --density-scale: 0.875;
+
+  /* Typography follows Captura's compact macOS-native rhythm. */
+  --font-ui: -apple-system, BlinkMacSystemFont, "SF Pro Text", "SF Pro Display",
+    "Helvetica Neue", Arial, sans-serif;
+  --font-code: "SFMono-Regular", "SF Mono", ui-monospace, Menlo, Monaco,
+    Consolas, "Liberation Mono", monospace;
+  --font-display: var(--font-ui);
+
+  /* Semantic color contract: light appearance. */
+  --background: color-mix(in oklab, var(--user-background) 8%, white);
+  --foreground: color-mix(in oklab, var(--user-background) 80%, black);
+  --card: color-mix(in oklab, var(--user-surface) 7%, white);
+  --card-foreground: var(--foreground);
+  --popover: color-mix(in oklab, var(--user-surface) 9%, white);
+  --popover-foreground: var(--foreground);
+  --primary: var(--user-primary);
+  --primary-foreground: var(--user-primary-foreground);
+  --secondary: color-mix(in oklab, var(--user-surface) 12%, white);
+  --secondary-foreground: var(--foreground);
+  --muted: color-mix(in oklab, var(--user-surface) 8%, white);
+  --muted-foreground: color-mix(in oklab, var(--user-surface) 52%, black);
+  --accent: color-mix(in oklab, var(--user-primary) 11%, var(--card));
+  --accent-foreground: color-mix(in oklab, var(--user-primary) 28%, var(--foreground));
+  --destructive: var(--user-danger);
+  --destructive-foreground: color-mix(in oklab, var(--user-danger) 72%, black);
+  --info: var(--user-info);
+  --info-foreground: color-mix(in oklab, var(--user-info) 72%, black);
+  --success: var(--user-success);
+  --success-foreground: color-mix(in oklab, var(--user-success) 70%, black);
+  --warning: var(--user-warning);
+  --warning-foreground: color-mix(in oklab, var(--user-warning) 68%, black);
+  --border: color-mix(in oklab, var(--foreground) 12%, transparent);
+  --input: color-mix(in oklab, var(--foreground) 15%, transparent);
+  --ring: color-mix(in oklab, var(--primary) 78%, var(--foreground));
+
+  /* Shared data visualization and shell aliases. */
+  --chart-1: var(--primary);
+  --chart-2: var(--info);
+  --chart-3: var(--success);
+  --chart-4: var(--warning);
+  --chart-5: var(--destructive);
+  --sidebar: var(--card);
+  --sidebar-foreground: var(--card-foreground);
+  --sidebar-primary: var(--primary);
+  --sidebar-primary-foreground: var(--primary-foreground);
+  --sidebar-accent: var(--accent);
+  --sidebar-accent-foreground: var(--accent-foreground);
+  --sidebar-border: var(--border);
+  --sidebar-ring: var(--ring);
+
+  /* Radius hierarchy: keys/counts -> controls -> popups -> shells. */
+  --radius-kbd: max(4px, calc(var(--user-radius) - 6px));
+  --radius-compact: max(6px, calc(var(--user-radius) - 3px));
+  --radius: var(--user-radius);
+  --radius-control: var(--user-radius);
+  --radius-menu: calc(var(--user-radius) + 3px);
+  --radius-panel: calc(var(--user-radius) + 6px);
+  --radius-shell: calc(var(--user-radius) + 10px);
+
+  /* Density variables are opt-in for layout-neutral custom components. */
+  --control-height-sm: calc(26px * var(--density-scale));
+  --control-height: calc(32px * var(--density-scale));
+  --control-height-lg: calc(38px * var(--density-scale));
+  --control-padding-x: calc(12px * var(--density-scale));
+  --surface-gap: calc(12px * var(--density-scale));
+
+  /* Captura's inset hairline and restrained elevation vocabulary. */
+  --surface-highlight: color-mix(in oklab, white 52%, transparent);
+  --surface-lowlight: color-mix(in oklab, black 20%, transparent);
+  --overlay: color-mix(in oklab, var(--user-background) 42%, transparent);
+  --shadow-control: 0 1px 2px color-mix(in oklab, black 8%, transparent),
+    inset 0 1px color-mix(in oklab, white 46%, transparent);
+  --shadow-popover: 0 16px 40px color-mix(in oklab, black 18%, transparent),
+    inset 0 1px color-mix(in oklab, white 40%, transparent),
+    inset 0 -1px color-mix(in oklab, black 8%, transparent);
+  --shadow-panel: 0 24px 70px color-mix(in oklab, black 22%, transparent),
+    inset 0 1px color-mix(in oklab, white 42%, transparent),
+    inset 0 -1px color-mix(in oklab, black 10%, transparent);
+
+  /* Glass tokens can be disabled without changing component markup. */
+  --glass-enabled: 1;
+  --glass-background: color-mix(in oklab, var(--card) 84%, transparent);
+  --glass-border: color-mix(in oklab, var(--foreground) 11%, transparent);
+  --glass-blur: 18px;
+
+  /* Motion is deliberately short and quiet. */
+  --motion-fast: 140ms;
+  --motion-standard: 180ms;
+  --motion-slow: 240ms;
+  --motion-ease: cubic-bezier(0.2, 0.8, 0.2, 1);
+}
+
+:root.dark,
+:root[data-theme="dark"] {
+  color-scheme: dark;
+  --background: color-mix(in oklab, var(--user-background) 90%, black);
+  --foreground: color-mix(in oklab, var(--user-surface) 8%, white);
+  --card: color-mix(in oklab, var(--user-surface) 88%, black);
+  --card-foreground: var(--foreground);
+  --popover: color-mix(in oklab, var(--user-surface) 94%, black);
+  --popover-foreground: var(--foreground);
+  --secondary: color-mix(in oklab, var(--user-surface) 86%, white 6%);
+  --secondary-foreground: var(--foreground);
+  --muted: color-mix(in oklab, var(--user-surface) 84%, white 5%);
+  --muted-foreground: color-mix(in oklab, var(--foreground) 62%, transparent);
+  --accent: color-mix(in oklab, var(--user-primary) 13%, var(--card));
+  --accent-foreground: color-mix(in oklab, var(--user-primary) 68%, white);
+  --destructive-foreground: color-mix(in oklab, var(--user-danger) 78%, white);
+  --info-foreground: color-mix(in oklab, var(--user-info) 78%, white);
+  --success-foreground: color-mix(in oklab, var(--user-success) 78%, white);
+  --warning-foreground: color-mix(in oklab, var(--user-warning) 78%, white);
+  --border: color-mix(in oklab, var(--foreground) 11%, transparent);
+  --input: color-mix(in oklab, var(--foreground) 14%, transparent);
+  --ring: color-mix(in oklab, var(--primary) 82%, white);
+  --surface-highlight: color-mix(in oklab, white 11%, transparent);
+  --surface-lowlight: color-mix(in oklab, black 34%, transparent);
+  --overlay: color-mix(in oklab, var(--user-background) 62%, transparent);
+  --shadow-control: 0 1px 2px color-mix(in oklab, black 26%, transparent),
+    inset 0 1px color-mix(in oklab, white 8%, transparent),
+    inset 0 -1px color-mix(in oklab, black 28%, transparent);
+  --shadow-popover: 0 18px 44px color-mix(in oklab, black 44%, transparent),
+    inset 0 1px color-mix(in oklab, white 9%, transparent),
+    inset 0 -1px color-mix(in oklab, black 30%, transparent);
+  --shadow-panel: 0 28px 80px color-mix(in oklab, black 52%, transparent),
+    inset 0 1px color-mix(in oklab, white 10%, transparent),
+    inset 0 -1px color-mix(in oklab, black 34%, transparent);
+  --glass-background: color-mix(in oklab, var(--card) 82%, transparent);
+  --glass-border: color-mix(in oklab, var(--foreground) 11%, transparent);
+}
+
+:root[data-density="compact"] {
+  --density-scale: 0.875;
+}
+
+:root[data-density="comfortable"] {
+  --density-scale: 1;
+}
+
+:root[data-density="spacious"] {
+  --density-scale: 1.125;
+}
+
+:root[data-glass="false"] {
+  --glass-enabled: 0;
+  --glass-background: var(--card);
+  --glass-border: var(--border);
+  --glass-blur: 0px;
+}
+
+:root[data-shadow="false"] {
+  --shadow-control: none;
+  --shadow-popover: none;
+  --shadow-panel: none;
+}
+
+@theme inline {
+  --font-sans: var(--font-ui);
+  --font-mono: var(--font-code);
+  --font-heading: var(--font-display);
+
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  --color-card: var(--card);
+  --color-card-foreground: var(--card-foreground);
+  --color-popover: var(--popover);
+  --color-popover-foreground: var(--popover-foreground);
+  --color-primary: var(--primary);
+  --color-primary-foreground: var(--primary-foreground);
+  --color-secondary: var(--secondary);
+  --color-secondary-foreground: var(--secondary-foreground);
+  --color-muted: var(--muted);
+  --color-muted-foreground: var(--muted-foreground);
+  --color-accent: var(--accent);
+  --color-accent-foreground: var(--accent-foreground);
+  --color-destructive: var(--destructive);
+  --color-destructive-foreground: var(--destructive-foreground);
+  --color-border: var(--border);
+  --color-input: var(--input);
+  --color-ring: var(--ring);
+  --color-info: var(--info);
+  --color-info-foreground: var(--info-foreground);
+  --color-success: var(--success);
+  --color-success-foreground: var(--success-foreground);
+  --color-warning: var(--warning);
+  --color-warning-foreground: var(--warning-foreground);
+  --color-chart-1: var(--chart-1);
+  --color-chart-2: var(--chart-2);
+  --color-chart-3: var(--chart-3);
+  --color-chart-4: var(--chart-4);
+  --color-chart-5: var(--chart-5);
+  --color-sidebar: var(--sidebar);
+  --color-sidebar-foreground: var(--sidebar-foreground);
+  --color-sidebar-primary: var(--sidebar-primary);
+  --color-sidebar-primary-foreground: var(--sidebar-primary-foreground);
+  --color-sidebar-accent: var(--sidebar-accent);
+  --color-sidebar-accent-foreground: var(--sidebar-accent-foreground);
+  --color-sidebar-border: var(--sidebar-border);
+  --color-sidebar-ring: var(--sidebar-ring);
+
+  --radius-xs: var(--radius-kbd);
+  --radius-sm: var(--radius-compact);
+  --radius-md: max(7px, calc(var(--user-radius) - 2px));
+  --radius-lg: var(--radius-control);
+  --radius-xl: var(--radius-menu);
+  --radius-2xl: var(--radius-panel);
+  --radius-3xl: var(--radius-shell);
+
+  --shadow-xs: var(--shadow-control);
+  --shadow-sm: var(--shadow-control);
+  --shadow-md: var(--shadow-popover);
+  --shadow-lg: var(--shadow-panel);
+}
+
+html {
+  font-family: var(--font-ui);
+  font-synthesis: none;
+  text-rendering: optimizeLegibility;
+}
+
+body,
+button,
+input,
+select,
+textarea {
+  font-family: var(--font-ui);
+}
+
+code,
+kbd,
+pre,
+samp {
+  font-family: var(--font-code);
+}
+
+::selection {
+  background: color-mix(in oklab, var(--primary) 30%, transparent);
+  color: var(--foreground);
+}
+
+[data-glass-surface] {
+  border-color: var(--glass-border);
+  background: var(--glass-background);
+  box-shadow: var(--shadow-panel);
+  backdrop-filter: blur(var(--glass-blur)) saturate(1.08);
+  -webkit-backdrop-filter: blur(var(--glass-blur)) saturate(1.08);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  :root {
+    --motion-fast: 1ms;
+    --motion-standard: 1ms;
+    --motion-slow: 1ms;
+  }
+
+  *,
+  *::before,
+  *::after {
+    scroll-behavior: auto !important;
+    animation-duration: 1ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 1ms !important;
+  }
+}

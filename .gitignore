@@ -1,0 +1,9 @@
+node_modules/
+.output/
+.wxt/
+_metadata/
+.codebase-memory/
+.DS_Store
+output/
+dist-site/
+*.zip

@@ -1,0 +1,46 @@
+{
+  "name": "unloop",
+  "version": "3.0.0",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "dev": "wxt",
+    "build": "wxt build",
+    "zip": "wxt zip",
+    "typecheck": "tsc --noEmit",
+    "test": "node --import tsx --test tests/*.test.ts",
+    "test:browser": "node scripts/browser-check.mjs",
+    "postinstall": "wxt prepare",
+    "test:playback": "node scripts/playback-check.mjs",
+    "test:fixture": "node scripts/fixture-check.mjs",
+    "test:settings": "node scripts/settings-check.mjs",
+    "test:theme": "node scripts/theme-check.mjs",
+    "build:site": "vite build --config site/vite.config.ts",
+    "dev:site": "vite --config site/vite.config.ts",
+    "test:motion": "node scripts/motion-check.mjs"
+  },
+  "dependencies": {
+    "@base-ui/react": "latest",
+    "@fontsource-variable/geist": "latest",
+    "class-variance-authority": "latest",
+    "clsx": "latest",
+    "lucide-react": "latest",
+    "react": "latest",
+    "react-dom": "latest",
+    "tailwind-merge": "latest"
+  },
+  "devDependencies": {
+    "@tailwindcss/vite": "latest",
+    "@types/node": "latest",
+    "@types/react": "latest",
+    "@types/react-dom": "latest",
+    "@wxt-dev/module-react": "latest",
+    "playwright": "1.61.0",
+    "tailwindcss": "latest",
+    "tsx": "latest",
+    "typescript": "latest",
+    "vite": "8.3.0",
+    "wxt": "0.21.4"
+  },
+  "license": "MIT"
+}
