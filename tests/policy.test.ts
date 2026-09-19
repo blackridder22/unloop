@@ -15,7 +15,7 @@ test('creator home routes go to Videos, never a trailer or home feed',()=>{
 });
 test('Shorts, feeds, and unsupported creator tabs remain blocked',()=>{
  for(const path of ['/','/shorts/abcdefghijk','/feed/subscriptions','/@name/shorts','/@name/community','/@name/posts','/results?search_query=%20','/watch?v=bad','/playlist?list='])assert.equal(classify(origin+path).kind,'blocked',path);
- for(const raw of ['https://youtube.com.evil.test/watch?v=abcdefghijk','https://music.youtube.com/watch?v=abcdefghijk','ftp://www.youtube.com/@name/videos','javascript:alert(1)'])assert.equal(classify(raw).kind,'blocked');
+ for(const raw of ['https://youtube.com.evil.test/watch?v=abcdefghijk','ftp://www.youtube.com/@name/videos','javascript:alert(1)'])assert.equal(classify(raw).kind,'blocked');
 });
 test('playlist browsing works but video links lose automatic queue context',()=>{
  assert.equal(classify(origin+'/playlist?list=PL_123').kind,'playlist');
@@ -57,4 +57,14 @@ test('settings are validated and enabled routes respect individual choices',()=>
  assert.equal(classify(origin+'/@name/shorts',enabled).kind,'shorts');
  assert.deepEqual(classify(origin+'/watch?v=abcdefghijk&list=PL_123&index=2',enabled),{kind:'watch',url:origin+'/watch?v=abcdefghijk&list=PL_123&index=2'});
  assert.equal(classify(origin+'/feed/subscriptions',enabled).kind,'blocked');
+});
+
+test('YouTube Music passes through unchanged, including queues and description links',()=>{
+ for(const path of ['/','/explore','/library','/watch?v=abcdefghijk&list=RDAMVMabcdefghijk&index=2&autoplay=1','/playlist?list=PL_123']){
+  const url='https://music.youtube.com'+path;
+  assert.deepEqual(classify(url),{kind:'redirect',url});
+  assert.equal(searchTarget(url),url);
+  assert.deepEqual(classify(origin+'/redirect?q='+encodeURIComponent(url)),{kind:'redirect',url});
+ }
+ for(const url of ['https://music.youtube.com.evil.test/','https://music.youtube.com@evil.test/','https://user:pass@music.youtube.com/','ftp://music.youtube.com/'])assert.equal(classify(url).kind,'blocked');
 });

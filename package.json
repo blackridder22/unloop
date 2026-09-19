@@ -1,6 +1,6 @@
 {
   "name": "unloop",
-  "version": "3.0.0",
+  "version": "3.0.1",
   "private": true,
   "type": "module",
   "scripts": {
@@ -17,7 +17,8 @@
     "test:theme": "node scripts/theme-check.mjs",
     "build:site": "vite build --config site/vite.config.ts",
     "dev:site": "vite --config site/vite.config.ts",
-    "test:motion": "node scripts/motion-check.mjs"
+    "test:motion": "node scripts/motion-check.mjs",
+    "test:music": "node scripts/music-check.mjs"
   },
   "dependencies": {
     "@base-ui/react": "latest",

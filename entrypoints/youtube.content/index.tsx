@@ -9,8 +9,9 @@ import './style.css';
 
 type Mount={host:HTMLElement;root:Root};
 export default defineContentScript({
- matches:['*://*.youtube.com/*'], runAt:'document_start',
+ matches:['*://youtube.com/*','*://www.youtube.com/*','*://m.youtube.com/*'], runAt:'document_start',
  async main(ctx) {
+  if (!youtubeHosts.includes(location.hostname)) return;
   const stopTheme=bindTheme(true);
   ctx.onInvalidated(stopTheme);
   let settings:Settings={...defaults};

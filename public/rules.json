@@ -16,6 +16,9 @@
       ],
       "resourceTypes": [
         "main_frame"
+      ],
+      "excludedRequestDomains": [
+        "music.youtube.com"
       ]
     }
   },

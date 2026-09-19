@@ -260,7 +260,7 @@ function App() {
             <a className="cta" href={download}>
               <Download size={18} /> Download Unloop <ArrowUpRight size={18} />
             </a>
-            <p className="fine">Chrome on desktop · ZIP download · v3.0.0</p>
+            <p className="fine">Chrome on desktop · ZIP download · v3.0.1</p>
           </div>
           <ol>
             <li>

@@ -17,6 +17,8 @@ This version is installed manually, not through the Chrome Web Store. To update,
 
 ## Features
 
+YouTube Music is excluded: its browsing, playback, autoplay, and queues work normally.
+
 - Opening YouTube starts with a purposeful search page.
 - Watch videos with YouTube’s native player, captions, speed, seeking, and fullscreen.
 - Keep descriptions in their own box, including links, chapters, expansion, and credits.
@@ -60,11 +62,12 @@ npx playwright install chromium
 npm run build
 npm run test:settings
 npm run test:motion
+npm run test:music
 npm run test:theme
 npm run test:browser
 ```
 
-Settings and motion checks use isolated Chromium profiles with controlled fixtures. The theme and general browser checks also reach live YouTube and may encounter sign-in or bot checks. Fixture results do not prove signed-in account actions. Screenshots are local evidence and are not committed.
+Music, settings, and motion checks use isolated Chromium profiles with controlled fixtures. The theme and general browser checks also reach live YouTube and may encounter sign-in or bot checks. Fixture results do not prove signed-in account actions. Screenshots are local evidence and are not committed.
 
 The optional playback fixture requires ffmpeg:
 

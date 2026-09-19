@@ -8,6 +8,8 @@ export type Route = { kind: 'search' | 'watch' | 'creator' | 'playlist' | 'home'
 export function classify(raw: string, settings: Settings = defaults, depth = 0): Route {
   let u: URL;
   try { u = new URL(raw); } catch { return {kind: 'blocked'}; }
+  // Music is outside Unloop: preserve its routes, queues, and playback parameters.
+  if (['http:', 'https:'].includes(u.protocol) && u.hostname === 'music.youtube.com' && !u.username && !u.password) return {kind:'redirect',url:u.href};
   if (!['http:', 'https:'].includes(u.protocol) || !youtubeHosts.includes(u.hostname)) return {kind:'blocked'};
   if (u.pathname === '/redirect') {
     if (depth >= 5) return {kind:'blocked'};
